@@ -1,0 +1,141 @@
+/* === Admin Dashboard Styles === */
+
+/* Theme tokens */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-weak: rgba(37, 99, 235, 0.12);
+  --ring: #93c5fd;
+  --border: #e5e7eb;
+  --shadow: 0 10px 20px rgba(0,0,0,.06), 0 6px 6px rgba(0,0,0,.04);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --card: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --primary: #60a5fa;
+    --primary-weak: rgba(96,165,250,.12);
+    --ring: #1d4ed8;
+    --border: #1f2937;
+    --shadow: 0 12px 24px rgba(0,0,0,.45), 0 6px 12px rgba(0,0,0,.35);
+  }
+}
+
+/* Page */
+html, body{
+  height: 100%;
+}
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:
+    radial-gradient(1200px 600px at -10% -10%, var(--primary-weak), transparent 60%),
+    radial-gradient(1000px 500px at 110% 0%, var(--primary-weak), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  place-items: start center;
+  padding: 48px 20px;
+}
+
+/* Layout container (targets your current markup directly) */
+h1{
+  margin: 0 0 6px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+p{
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* Card list */
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 920px;
+}
+li{ margin: 0; }
+
+/* Card link */
+a{
+  display: block;
+  text-decoration: none;
+  padding: 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Subtle descriptor based on link text (optional) */
+a[href*="issues"]::after{
+  content: " • Track and resolve";
+  font-weight: 500; color: var(--muted);
+}
+a[href*="reminders"]::after{
+  content: " • Stay on schedule";
+  font-weight: 500; color: var(--muted);
+}
+a[href*="events"]::after{
+  content: " • Plan & update";
+  font-weight: 500; color: var(--muted);
+}
+a[href*="logout"]{
+  font-weight: 700;
+  border-style: dashed;
+}
+
+/* Interactions */
+a:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0,0,0,.08), 0 8px 12px rgba(0,0,0,.06);
+  border-color: var(--ring);
+}
+a:active{
+  transform: translateY(0);
+}
+a:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--card),
+    0 0 0 5px var(--ring),
+    var(--shadow);
+}
+
+/* Compact on very small screens */
+@media (max-width: 380px){
+  a{
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+}
+
+/* Nice spacing around the header block */
+h1, p, ul{
+  width: 100%;
+  max-width: 920px;
+}
